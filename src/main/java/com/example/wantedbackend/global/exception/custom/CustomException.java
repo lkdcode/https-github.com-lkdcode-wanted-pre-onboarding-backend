@@ -8,7 +8,8 @@ public class CustomException extends RuntimeException {
     private final ErrorCode errocode;
 
     public CustomException(ErrorCode errocode) {
-        super("meesage");
+        super(errocode.getMessage());
         this.errocode = errocode;
     }
+
 }
