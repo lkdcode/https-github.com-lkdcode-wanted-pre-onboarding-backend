@@ -19,7 +19,7 @@ public class PostController {
         return null;
     }
 
-    @GetMapping("/detail/{idx}")
+    @GetMapping("/list/detail/{idx}")
     public ApplicationResponse<?> findById() {
         return null;
     }
