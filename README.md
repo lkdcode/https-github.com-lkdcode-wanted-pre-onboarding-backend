@@ -1,8 +1,36 @@
 # 원티드 프리온보딩 백엔드 인턴십 - 선발 과제
 
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+### 🎯 DataBase Diagram
+
 ```mermaid
 erDiagram
-    dt
+    TB_MEMBER ||--o{ TB_POST: MEMBER-POST
+
+    TB_MEMBER {
+        member_idx INT(10) PK "AUTO_INCREMENT"
+        member_account VARCHAR(100) UK "Not Null"
+        member_password VARCHAR(2000) "Not Null"
+        create_dt TIMESTAMP "DEFAULT CURRENT_TIMESTAMP"
+        update_dt TIMESTAMP "DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP"
+    }
+
+    TB_POST {
+        post_idx INT(10) PK "AUTO_INCREMENT"
+        post_title VARCHAR(50) "Not Null"
+        post_content VARCHAR(2000) "Not Null"
+        create_dt TIMESTAMP "DEFAULT CURRENT_TIMESTAMP"
+        update_dt TIMESTAMP "DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP"
+        member MEMBER "Not Null"
+    }
+
 ```
 
 <br/>
@@ -24,8 +52,6 @@ erDiagram
     - 통합 테스트 또는 단위 테스트 코드를 추가한 경우
     - docker compose를 이용하여 애플리케이션 환경을 구성한 경우 (README.md 파일에 docker-compose 실행 방법 반드시 기입)
     - 클라우드 환경(AWS, GCP)에 배포 환경을 설계하고 애플리케이션을 배포한 경우 (README.md 파일에 배포된 API 주소와 설계한 AWS 환경 그림으로 첨부)
-
-
 
 <br></br>
 
