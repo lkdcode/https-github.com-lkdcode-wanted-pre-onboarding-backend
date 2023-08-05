@@ -8,10 +8,9 @@ import com.example.wantedbackend.module.Member.controller.dto.response.SignupRes
 import com.example.wantedbackend.module.Member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Validated
 @RequiredArgsConstructor
@@ -22,13 +21,15 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/signup")
-    public ApplicationResponse<SignupResponseDTO> signup(SignupRequestDTO dto) {
-        return null;
+    public ApplicationResponse<SignupResponseDTO> signup(@RequestBody @Valid SignupRequestDTO dto) {
+        SignupResponseDTO signup = memberService.signup(dto);
+        return ApplicationResponse.of(signup);
     }
 
     @PostMapping("/signin")
-    public ApplicationResponse<SigninResponseDTO> signin(SigninRequestDTO dto) {
-        return null;
+    public ApplicationResponse<SigninResponseDTO> signin(@RequestBody @Valid SigninRequestDTO dto) {
+        SigninResponseDTO signin = memberService.signin(dto);
+        return ApplicationResponse.of(signin);
     }
 
 }

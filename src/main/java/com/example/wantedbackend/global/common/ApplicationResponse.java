@@ -13,13 +13,21 @@ public class ApplicationResponse<T> {
     private T payload;
     private String message;
 
-    public ApplicationResponse(T payload) {
+    private ApplicationResponse(T payload) {
         this.payload = payload;
         this.message = SUCCESS_MESSAGE;
     }
 
-    public ApplicationResponse() {
+    private ApplicationResponse() {
         this.message = SUCCESS_MESSAGE;
+    }
+
+    public static <T> ApplicationResponse<T> of(T payload) {
+        return new ApplicationResponse<>(payload);
+    }
+
+    public static <T> ApplicationResponse<T> of() {
+        return new ApplicationResponse<>();
     }
 
 }

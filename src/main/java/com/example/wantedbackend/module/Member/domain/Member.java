@@ -10,9 +10,10 @@ import javax.persistence.*;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @Entity
-@Table(name = "tb_mebmer")
+@Table(name = "tb_member")
+@ToString
 public class Member extends BaseEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_idx", nullable = false)
