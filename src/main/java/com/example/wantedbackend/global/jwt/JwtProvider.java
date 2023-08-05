@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 @RequiredArgsConstructor
 public class JwtProvider {
 
-    // private final MemberRepository memberRepository;
-    // private final AuthRepository authRepository;
     private final String ACCOUNT = "ACCOUNT";
     private final String NICKNAME = "NICKNAME";
     private final String LOGIN_METHOD = "LOGIN_METHOD";
@@ -22,8 +20,8 @@ public class JwtProvider {
     private final long ACCESS_TOKEN_VALID_TIME = 2 * 60 * 60 * 1000L;
     private final long REFRESH_TOKEN_VALID_TIME = 60 * 60 * 24 * 7 * 1000L;
     @Value("${jwt.secret-key}")
-    private final String SECRET_KEY; // Access Token
+    private String SECRET_KEY;
     @Value("${jwt.refresh-key}")
-    private final String REFRESH_KEY; // Refresh Token
+    private String REFRESH_KEY;
 
 }

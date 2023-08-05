@@ -16,26 +16,31 @@ public class PostController {
 
     @GetMapping("/list/{page}")
     public ApplicationResponse<?> findAll() {
+        System.out.println("hello posts/list/{page}");
         return null;
     }
 
     @GetMapping("/list/detail/{idx}")
     public ApplicationResponse<?> findById() {
+        System.out.println("hello posts/list/detail/{idx}");
         return null;
     }
 
     @PostMapping
     public ApplicationResponse<?> create() {
+        System.out.println("hello posts [ POST ]");
         return null;
     }
 
     @PatchMapping
     public ApplicationResponse<?> update() {
+        System.out.println("hello posts [ PATCH ]");
         return null;
     }
 
     @DeleteMapping
     public ApplicationResponse<?> delete() {
+        System.out.println("hello posts [ DELETE ]");
         return null;
     }
 

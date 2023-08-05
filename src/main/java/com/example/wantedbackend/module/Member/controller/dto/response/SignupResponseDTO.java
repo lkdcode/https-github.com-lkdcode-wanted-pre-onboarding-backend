@@ -1,4 +1,5 @@
 package com.example.wantedbackend.module.Member.controller.dto.response;
 
-public class SignupResponseDTO {
+public record SignupResponseDTO(Boolean isSignup) {
+
 }

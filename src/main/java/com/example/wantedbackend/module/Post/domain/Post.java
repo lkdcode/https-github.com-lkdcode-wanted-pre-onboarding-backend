@@ -1,6 +1,7 @@
 package com.example.wantedbackend.module.Post.domain;
 
 import com.example.wantedbackend.global.entity.BaseEntity;
+import com.example.wantedbackend.module.Member.domain.Member;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,5 +24,9 @@ public class Post extends BaseEntity {
 
     @Column(name = "post_content", nullable = false, length = 2000)
     private String content;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_idx")
+    private Member member;
 
 }
