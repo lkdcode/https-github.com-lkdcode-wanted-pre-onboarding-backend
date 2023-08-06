@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostDeleteResponseDTO {
+public class PostCreateResponseDTO {
 
-    private Boolean isDelete;
+    private Boolean isCreate;
 
 }

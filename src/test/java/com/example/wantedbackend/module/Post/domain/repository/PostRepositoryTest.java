@@ -128,7 +128,7 @@ class PostRepositoryTest {
 
         // then
         Optional<Post> deletedPost = repository.findById(idx);
-        assertFalse(deletedPost.isPresent());
+        assertTrue(deletedPost.isEmpty());
     }
 
 }
