@@ -43,7 +43,7 @@ class MemberRepositoryTest {
     @DisplayName("tb_member 테이블에 account 로 회원을 찾을 수 있다.")
     void findByAccountTest() {
         // given
-        String account = "test@naver.com";
+        String account = "test123@naver.com";
         String password = "qwer1234!";
 
         Member member = Member.builder()
