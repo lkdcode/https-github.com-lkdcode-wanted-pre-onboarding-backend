@@ -1,7 +1,7 @@
 package com.example.wantedbackend.member.domain;
 
 import com.example.wantedbackend.member.domain.type.MemberStatus;
-import com.example.wantedbackend.core.BaseEntity;
+import com.example.wantedbackend.support.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,4 +25,3 @@ public class Member extends BaseEntity {
     private MemberStatus status = MemberStatus.CREATED;
 
 }
-

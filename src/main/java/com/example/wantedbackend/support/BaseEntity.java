@@ -1,4 +1,4 @@
-package com.example.wantedbackend.core;
+package com.example.wantedbackend.support;
 
 
 import lombok.Getter;
