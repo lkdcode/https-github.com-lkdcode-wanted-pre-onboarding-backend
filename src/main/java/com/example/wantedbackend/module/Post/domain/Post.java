@@ -29,4 +29,12 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "member_idx")
     private Member member;
 
+    public void updateTitle(String newTitle) {
+        this.title = newTitle;
+    }
+
+    public void updateContent(String newContent) {
+        this.content = newContent;
+    }
+
 }

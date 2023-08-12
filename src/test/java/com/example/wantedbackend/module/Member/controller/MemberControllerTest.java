@@ -2,8 +2,6 @@ package com.example.wantedbackend.module.Member.controller;
 
 import com.example.wantedbackend.module.Member.controller.dto.request.SigninRequestDTO;
 import com.example.wantedbackend.module.Member.controller.dto.request.SignupRequestDTO;
-import com.example.wantedbackend.module.Member.domain.Member;
-import com.example.wantedbackend.module.Member.domain.repository.MemberRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
