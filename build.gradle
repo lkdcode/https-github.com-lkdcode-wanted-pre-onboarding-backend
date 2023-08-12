@@ -33,6 +33,7 @@ dependencies {
     // --------- mapper
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
     // --------- jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
@@ -51,6 +52,16 @@ dependencies {
 
     // Mysql
     runtimeOnly 'com.mysql:mysql-connector-j'
+}
+
+// Compile Time VM Options (1)
+compileJava {
+    options.compilerArgs += ['--enable-preview', '-Amapstruct.defaultComponentModel=spring']
+}
+
+// Compile Time VM Options (2)
+compileTestJava {
+    options.compilerArgs += ['--enable-preview', '-Amapstruct.defaultComponentModel=spring']
 }
 
 tasks.named('test') {
