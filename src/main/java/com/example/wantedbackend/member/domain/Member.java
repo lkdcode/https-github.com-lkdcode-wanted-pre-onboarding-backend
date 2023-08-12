@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Entity(name = "flyMember")
 public class Member extends BaseEntity {
 
+    private String name;
     private String email;
     private String password;
 
