@@ -1,0 +1,19 @@
+services:
+  wanted-mysql:
+    image: mysql:8.0
+    container_name: wanted-mysql
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --range_optimizer_max_mem_size=16777216
+    environment:
+      MYSQL_DATABASE: wanted
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: "%"
+      TZ: Asia/Seoul
+    volumes:
+      - ./config/:/docker-entrypoint-initdb.d/
+    ports:
+      - 3307:3306
+    restart: on-failure
