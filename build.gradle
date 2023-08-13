@@ -59,7 +59,7 @@ compileJava {
     options.compilerArgs += ['--enable-preview', '-Amapstruct.defaultComponentModel=spring']
 }
 
-// Compile Time VM Options (2)
+//// Compile Time VM Options (2)
 compileTestJava {
     options.compilerArgs += ['--enable-preview', '-Amapstruct.defaultComponentModel=spring']
 }
