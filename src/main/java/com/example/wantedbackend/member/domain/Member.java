@@ -13,7 +13,7 @@ import javax.persistence.Enumerated;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor/*(access = AccessLevel.PROTECTED)*/
 @Entity
 public class Member extends BaseEntity {
 

@@ -24,11 +24,11 @@ public class AuthApi {
         return memberRegisterUsecase.signup(dto);
     }
 
-//    @PostMapping("/signin")
-//    public MemberSigninResponseDTO singin(
-//            @RequestBody @Valid MemberSigninRequestDTO dto
-//    ) {
-//        return memberRegisterUsecase.signin(dto);
-//    }
+    @PostMapping("/signin")
+    public MemberSigninResponseDTO singin(
+            @RequestBody @Valid MemberSigninRequestDTO dto
+    ) {
+        return memberRegisterUsecase.signin(dto);
+    }
 
 }

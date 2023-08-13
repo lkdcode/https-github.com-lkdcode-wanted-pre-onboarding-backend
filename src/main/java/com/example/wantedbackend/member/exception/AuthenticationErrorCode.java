@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 public enum AuthenticationErrorCode implements ErrorCode {
 
     DUPLICATED_EMAIL("중복된 이메일입니다.", HttpStatus.BAD_REQUEST),
+    SIGNIN_FAIL("아이디 혹은 비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST),
     MISMATCHED("회원 정보가 일치하지 않습니다.", HttpStatus.NOT_FOUND),
     UNAUTHORIZED("인증 유저 정보가 존재하지 않습니다.", HttpStatus.UNAUTHORIZED),
     FORBIDDEN("올바르지 않은 권한입니다.", HttpStatus.FORBIDDEN),

@@ -10,6 +10,7 @@ import com.example.wantedbackend.member.exception.AuthenticationErrorCode;
 import com.example.wantedbackend.member.exception.AuthenticationException;
 import com.example.wantedbackend.member.repository.MemberRepository;
 import com.example.wantedbackend.member.service.mapper.MemberDTOMapper;
+import com.example.wantedbackend.util.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class MemberRegisterService implements MemberRegisterUsecase {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final MemberDTOMapper mapper;
+    private final JwtProvider jwtProvider;
 
     @Override
     public MemberSignupResponseDTO signup(MemberSignupRequestDTO dto) {
@@ -47,9 +49,18 @@ public class MemberRegisterService implements MemberRegisterUsecase {
     @Override
     public MemberSigninResponseDTO signin(MemberSigninRequestDTO dto) {
 
+        Member member = memberRepository.findByEmail(dto.email())
+                .orElseThrow(AuthenticationErrorCode.SIGNIN_FAIL::defaultException);
+
+        boolean matches = passwordEncoder.matches(dto.rawPassword(), member.getPassword());
+        if (!matches) throw new AuthenticationException(AuthenticationErrorCode.SIGNIN_FAIL);
+
+        String token = jwtProvider.generateAsUser(dto.email(), member.getName());
+
         return MemberSigninResponseDTO.builder()
-                .token(null)
+                .token(token)
                 .build();
+
     }
 
 }
