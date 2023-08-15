@@ -12,7 +12,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/members")
 public class AuthApi {
 
     private final MemberRegisterUsecase memberRegisterUsecase;
