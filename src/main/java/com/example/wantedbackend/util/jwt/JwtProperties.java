@@ -1,8 +1,14 @@
 package com.example.wantedbackend.util.jwt;
 
+import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
+import java.security.Key;
 
 @ConfigurationProperties(prefix = "app.jwt")
 @ConfigurationPropertiesBinding
@@ -12,12 +18,11 @@ public record JwtProperties(
         String secret,
         Long expiredIn
 ) {
-    public JwtProperties {
-        if (expiredIn == null) {
-            expiredIn = 1_800_000L;
-        }
-        if (secret == null) {
-            secret = "77d1b474a0920ab13e44a05170117cf0e809bad5c554d19020a95b45e9e2fb95893b8b149382e294d78fdb8e5aa2ae266b5797d985f5dc127366d2a50ec3938e";
-        }
+
+    public Key getSecretKey() {
+        byte[] keyBytes = DatatypeConverter.parseBase64Binary(secret);
+
+        return new SecretKeySpec(keyBytes, SignatureAlgorithm.HS256.getJcaName());
     }
+
 }
