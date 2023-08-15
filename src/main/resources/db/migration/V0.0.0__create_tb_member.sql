@@ -1,10 +1,10 @@
-create table member (
-id          bigint      not null    auto_increment,
-created_at  datetime(6),
-updated_at  datetime(6),
-email       varchar(255),
-name        varchar(255),
-password    varchar(255),
-status      varchar(255),
-primary key (id)
+CREATE TABLE member (
+id          BIGINT      NOT NULL    AUTO_INCREMENT,
+created_at  DATETIME(6),
+updated_at  DATETIME(6),
+email       VARCHAR(255) NOT NULL UNIQUE,
+name        VARCHAR(255) NOT NULL,
+password    VARCHAR(255) NOT NULL,
+status      VARCHAR(255) NOT NULL,
+PRIMARY KEY (id)
 )
