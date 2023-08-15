@@ -1,7 +1,6 @@
 package com.example.wantedbackend.util.jwt;
 
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
