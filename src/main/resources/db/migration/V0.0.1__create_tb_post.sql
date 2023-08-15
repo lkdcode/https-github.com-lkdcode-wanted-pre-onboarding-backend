@@ -1,9 +1,9 @@
-create table post (
-id bigint       not null        auto_increment,
-created_at      datetime(6),
-updated_at      datetime(6),
-content         varchar(255),
-title           varchar(255),
-member_id       bigint          not null,
-primary key (id)
+CREATE TABLE post (
+id              BIGINT          NOT NULL       AUTO_INCREMENT,
+created_at      DATETIME(6),
+updated_at      DATETIME(6),
+title           VARCHAR(255)    NOT NULL,
+content         VARCHAR(2000)   NOT NULL,
+member_id       BIGINT          NOT NULL,
+PRIMARY KEY (id)
 )
