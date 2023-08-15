@@ -1,10 +1,7 @@
 package com.example.wantedbackend.post.api;
 
 import com.example.wantedbackend.config.security.CustomUserDetails;
-import com.example.wantedbackend.post.api.dto.PostCommandDTO.PostCreateRequestDTO;
-import com.example.wantedbackend.post.api.dto.PostCommandDTO.PostCreateResponseDTO;
-import com.example.wantedbackend.post.api.dto.PostCommandDTO.PostDeleteResponseDTO;
-import com.example.wantedbackend.post.api.dto.PostCommandDTO.PostUpdateResponseDTO;
+import com.example.wantedbackend.post.api.dto.PostCommandDTO.*;
 import com.example.wantedbackend.post.service.PostCommandUsecase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,27 +21,7 @@ public class PostCommandApi {
             @RequestBody @Valid PostCreateRequestDTO dto,
             @AuthenticationPrincipal CustomUserDetails userDetails
     ) {
-        System.out.println(userDetails);
-        System.out.println(userDetails.getId());
-        System.out.println(userDetails.getUsername());
-        System.out.println(userDetails.getPassword());
-
-        System.out.println("create");
-        return null;
-    }
-
-    @PutMapping("/{id}")
-    public PostUpdateResponseDTO update(
-            @PathVariable(name = "id") Long id,
-            @AuthenticationPrincipal CustomUserDetails userDetails
-    ) {
-        System.out.println(userDetails);
-        System.out.println(userDetails.getId());
-        System.out.println(userDetails.getUsername());
-        System.out.println(userDetails.getPassword());
-
-        System.out.println("update");
-        return null;
+        return postCommandUsecase.create(dto, userDetails);
     }
 
     @DeleteMapping("/{id}")
@@ -52,13 +29,15 @@ public class PostCommandApi {
             @PathVariable(name = "id") Long id,
             @AuthenticationPrincipal CustomUserDetails userDetails
     ) {
-        System.out.println(userDetails);
-        System.out.println(userDetails.getId());
-        System.out.println(userDetails.getUsername());
-        System.out.println(userDetails.getPassword());
+        return postCommandUsecase.delete(id, userDetails);
+    }
 
-        System.out.println("delete");
-        return null;
+    @PutMapping
+    public PostUpdateResponseDTO update(
+            @RequestBody @Valid PostUpdateRequestDTO dto,
+            @AuthenticationPrincipal CustomUserDetails userDetails
+    ) {
+        return postCommandUsecase.update(dto, userDetails);
     }
 
 }

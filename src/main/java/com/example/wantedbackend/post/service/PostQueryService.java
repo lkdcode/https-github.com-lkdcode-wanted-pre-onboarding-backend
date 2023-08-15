@@ -36,6 +36,7 @@ public class PostQueryService implements PostQueryUsecase {
                         .collect(Collectors.toList());
 
         long lastPageNumber = foundList.getTotalPages();
+
         if (pageable.getPageNumber() >= lastPageNumber) {
             throw new PostException(PostErrorCode.PAGE_OUT_OF_RANGE);
         }
@@ -48,9 +49,7 @@ public class PostQueryService implements PostQueryUsecase {
     @Override
     public PostResponseDTO findById(Long id) {
         Post foundPost = postQueryRepository.findById(id)
-                .orElseThrow(
-                        () -> new PostException(PostErrorCode.NOT_FOUNT_POST)
-                );
+                .orElseThrow(PostErrorCode.NOT_FOUNT_POST::defaultException);
 
         return PostResponseDTO.builder()
                 .title(foundPost.getTitle())
