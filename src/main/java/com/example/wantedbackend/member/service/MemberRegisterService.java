@@ -55,7 +55,7 @@ public class MemberRegisterService implements MemberRegisterUsecase {
         boolean matches = passwordEncoder.matches(dto.rawPassword(), member.getPassword());
         if (!matches) throw new AuthenticationException(AuthenticationErrorCode.SIGNIN_FAIL);
 
-        String token = jwtProvider.generateAsUser(dto.email(), member.getName());
+        String token = jwtProvider.createToken(member.getId());
 
         return MemberSigninResponseDTO.builder()
                 .token(token)
