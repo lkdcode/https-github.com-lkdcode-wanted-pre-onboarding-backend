@@ -52,6 +52,8 @@ public class PostQueryService implements PostQueryUsecase {
                 .orElseThrow(PostErrorCode.NOT_FOUNT_POST::defaultException);
 
         return PostResponseDTO.builder()
+                .id(foundPost.getId())
+                .name(foundPost.getMember().getName())
                 .title(foundPost.getTitle())
                 .content(foundPost.getTitle())
                 .createdAt(foundPost.getCreatedAt())
