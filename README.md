@@ -15,7 +15,7 @@
 - POST : localhost:8181/api/members/signup : 회원가입
 - GET : localhost:8181/api/posts/list : 게시판 전체 조회
 - GET : localhost:8181/api/posts/{idx} : 특정 게시판 조회
-- POST : localhost:8181/api/posts : 특정 게시판 삭제
+- POST : localhost:8181/api/posts : 게시판 작성
 - DELETE : localhost:8181/api/posts/{id} : 특정 게시판 삭제
 - PUT : localhost:8181/api/posts : 특정 게시판 수정
 
@@ -47,6 +47,8 @@ erDiagram
 
 ### 구현한 API의 동작을 촬영한 데모 영상 링크
 
+
+
 ### 구현 방법 및 이유에 대한 간략한 설명
 
 - 회원가입
@@ -71,6 +73,28 @@ erDiagram
     - 요청이 오기전 필터에서 유효성 검사를 진행하고 컨트롤러에서 사용할 정보를 넘겨준다.
 
 ### API 명세(request/response 포함)
+
+- POST : localhost:8181/api/members/signin : 로그인
+    - request : String email, String rawPassword
+    - response : String token
+- POST : localhost:8181/api/members/signup : 회원가입
+    - request : String name, String email, String rawPassword
+    - response : boolean success
+- GET : localhost:8181/api/posts/list : 게시판 전체 조회
+    - request : Pagealbe pageable
+    - response : List`<PostResponseDTO>` list
+- GET : localhost:8181/api/posts/{idx} : 특정 게시판 조회
+    - request : Long id
+    - response : Long id, String title, String content, String name, Instant createdAt, Instant updatedAt
+- POST : localhost:8181/api/posts : 게시판 작성
+    - request : String title, String content, CustomUserDetails userDetails
+    - response : Boolean success
+- DELETE : localhost:8181/api/posts/{id} : 특정 게시판 삭제
+    - request : Long id, CustomUserDetails userDetails
+    - response : Boolean success
+- PUT : localhost:8181/api/posts : 특정 게시판 수정
+    - request : Long postId, String updateTitle, String updateContent, CustomUserDetails userDetails
+    - response : Boolean success
 
 ### 가산점
 
