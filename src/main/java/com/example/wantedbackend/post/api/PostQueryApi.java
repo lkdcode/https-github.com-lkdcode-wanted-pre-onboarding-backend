@@ -18,7 +18,7 @@ import static org.springframework.data.domain.Sort.Direction.DESC;
 @RequestMapping("/api/posts")
 public class PostQueryApi {
 
-    private PostQueryUsecase postQueryUsecase;
+    private final PostQueryUsecase postQueryUsecase;
 
     @GetMapping("/list")
     public PostFindAllResponseDTO findAll(
